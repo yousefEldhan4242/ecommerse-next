@@ -1,12 +1,14 @@
 import { getToken } from "next-auth/jwt";
 import withAuth from "next-auth/middleware";
 import { NextRequest, NextResponse } from "next/server";
-
+import { i18nRouter } from "next-i18n-router";
+import i18nConfig from "../i18nConfig";
 enum authRoutes {
   signIn = "/signIn",
   signUp = "/signUp",
 }
 
+// next auth
 export default withAuth(
   async function middleware(request: NextRequest) {
     const pathName = request.nextUrl.pathname;
@@ -36,5 +38,22 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/profile/:path*", authRoutes.signIn, authRoutes.signUp],
+  matcher: [
+    "/profile/:path*",
+    "/signIn",
+    "/signUp",
+    "/((?!api|static|.*\\..*|_next).*)",
+  ],
 };
+
+// i18next
+// <<<<<<< Tabnine <<<<<<<
+export function middleware(request: NextRequest) {
+  // return i18nRouter(request, i18nConfig);//-
+  return i18nRouter(request, {
+    //+
+    ...i18nConfig, //+
+    serverSetCookie: "always", // or "if-empty", "never"//+
+  }); //+
+}
+// >>>>>>> Tabnine >>>>>>>// {"conversationId":"2b868d5e-f687-44f4-b0e1-7c8fe4737483","source":"instruct"}

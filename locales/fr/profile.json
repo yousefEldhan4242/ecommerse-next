@@ -1,0 +1,1 @@
+{"email":"Courriel : {{email}}","go_home":"Aller à la page d'accueil","user_name":"{session?.utilisateur?.nom}"}
