@@ -10,4 +10,18 @@ export default interface Product {
   availableItems: string;
   previousPrice: string;
   color: string;
+  description: string;
+  image_1: string;
+  image_2: string;
+  image_3: string;
+  image_4: string;
+}
+
+export interface ProductCardInterface {
+  product?: Product;
+  cardWidth: boolean;
+  showOnlyProductsWithSale?: boolean;
+  newBtn?: boolean;
+  showBtns?: boolean;
+  isInWhishList?: boolean;
 }

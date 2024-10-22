@@ -5,16 +5,7 @@ import { addToWhishList } from "../rtk/slices/whishList-slice";
 import { addToCart, increaseQuantityBy1 } from "../rtk/slices/cart-slice";
 import { useRef } from "react";
 import Link from "next/link";
-import Product from "@/interfaces";
-
-interface Props {
-  product: Product;
-  cardWidth: boolean;
-  showOnlyProductsWithSale: boolean;
-  newBtn: boolean;
-  showBtns: boolean;
-  isInWhishList: boolean;
-}
+import { ProductCardInterface } from "@/interfaces";
 
 const ProductCard = ({
   product,
@@ -23,7 +14,7 @@ const ProductCard = ({
   newBtn,
   showBtns,
   isInWhishList,
-}: Props) => {
+}: ProductCardInterface) => {
   const cartIconRef = useRef<HTMLSpanElement>(null);
   const dispatch = useDispatch();
   const renderStars = () => {

@@ -1,3 +1,4 @@
+"use client";
 import { useSelector } from "react-redux";
 import SectionProducts from "./SectionProducts";
 import SectionTitle from "./SectionTitle";

@@ -13,7 +13,8 @@ export const fetchProducts = createAsyncThunk(
 );
 
 const ProductsSlice = createSlice({
-  initialState: JSON.parse(localStorage.getItem("products") as string) || [],
+  initialState:
+    JSON.parse(window.localStorage.getItem("products") as string) || [],
   name: "ProductsSlice",
   reducers: {},
   extraReducers: (builder) => {

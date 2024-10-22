@@ -7,7 +7,7 @@ import Product from "@/interfaces";
 
 export interface State {
   products: Product[];
-  whishList: object[];
+  whishList: Product[];
   cart: Product[];
   loggedIn: boolean;
 }
