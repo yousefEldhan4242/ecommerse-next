@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import PropTypes from "prop-types";
 import { ProductCardInterface } from "@/interfaces";
 import Product from "@/interfaces";
+import React from "react";
 
 interface SectionProdcutsInterface extends ProductCardInterface {
   productsList: Product[];

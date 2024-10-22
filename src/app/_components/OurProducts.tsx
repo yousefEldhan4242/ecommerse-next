@@ -34,8 +34,8 @@ const OurProducts = () => {
     )
   );
 
-  const scrollFirstProductsRef = useRef<Window>(null);
-  const scrollSecondProdcutsRef = useRef<Window>(null);
+  const scrollFirstProductsRef = useRef<HTMLDivElement>(null);
+  const scrollSecondProdcutsRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
     scrollFirstProductsRef.current?.scrollBy({
