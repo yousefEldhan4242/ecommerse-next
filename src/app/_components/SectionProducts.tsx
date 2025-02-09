@@ -1,12 +1,13 @@
 "use client";
 import ProductCard from "./ProductCard";
-import PropTypes from "prop-types";
-import { ProductCardInterface } from "@/interfaces";
 import Product from "@/interfaces";
 import React from "react";
+import { useSelector } from "react-redux";
+import { State } from "../rtk/store";
+import Loading from "../[locale]/loading";
 
-interface SectionProdcutsInterface extends ProductCardInterface {
-  productsList: Product[];
+interface SectionProdcutsInterface {
+  // productsList: Product[];
   showBtn?: boolean;
   showDiscount?: boolean;
   showPrevPrice?: boolean;
@@ -15,11 +16,16 @@ interface SectionProdcutsInterface extends ProductCardInterface {
   parentStyles: string;
   handleViewAll?: () => void; //+
   viewAllBtnRef?: React.RefObject<HTMLSpanElement>;
-  scrollRef?: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLElement>;
+  product?:Product
+  cardWidth: boolean;
+  showOnlyProductsWithSale?: boolean;
+  newBtn?: boolean;
+  showBtns?: boolean;
+  isInWhishList?: boolean;
 }
 
 const SectionProducts = ({
-  productsList,
   cardWidth,
   showBtn,
   parentStyles,
@@ -28,21 +34,23 @@ const SectionProducts = ({
   showBtns,
   showHr = true,
   isInWhishList,
-  showOnlyProductsWithSale,
   isInProductsPage,
   scrollRef,
   handleViewAll,
   viewAllBtnRef,
 }: SectionProdcutsInterface) => {
+  const data = useSelector((state: State) => state.data);
+  const isProductsLoading = useSelector((state: State) => state.productsLoading)
+
+
   return (
     <>
       <section className={`${parentStyles}`} ref={scrollRef}>
-        {productsList &&
-          productsList.map((item, index) => {
+        {isProductsLoading ?
+          data.map((item:Product, index:number) => {
             return (
               <ProductCard
                 isInProductsPage={isInProductsPage}
-                showOnlyProductsWithSale={showOnlyProductsWithSale}
                 cardWidth={cardWidth}
                 key={index}
                 product={item}
@@ -52,7 +60,7 @@ const SectionProducts = ({
                 isInWhishList={isInWhishList}
               />
             );
-          })}
+          }): <Loading/>}
       </section>
       {showBtn && (
         <div className="flex items-center justify-center mt-10">
@@ -69,22 +77,6 @@ const SectionProducts = ({
       {showHr && <hr className="border-border-color mt-[60px]" />}
     </>
   );
-};
-SectionProducts.propTypes = {
-  productsList: PropTypes.array,
-  cardWidth: PropTypes.bool,
-  showBtn: PropTypes.bool,
-  parentStyles: PropTypes.string,
-  showDiscount: PropTypes.bool,
-  showPrevPrice: PropTypes.bool,
-  showBtns: PropTypes.bool,
-  showHr: PropTypes.bool,
-  isInWhishList: PropTypes.bool,
-  showOnlyProductsWithSale: PropTypes.bool,
-  isInProductsPage: PropTypes.bool,
-  scrollRef: PropTypes.object,
-  handleViewAll: PropTypes.func,
-  viewAllBtnRef: PropTypes.object,
 };
 
 export default SectionProducts;

@@ -1,10 +1,10 @@
 "use client";
-import { useSelector } from "react-redux";
 import SectionProducts from "./SectionProducts";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle/SectionTitle";
 import { useRef, useState } from "react";
-import { State } from "../rtk/store";
 import Product from "@/interfaces";
+import { useSelector } from "react-redux";
+import { State } from "../rtk/store";
 
 const shuffle = (arr: Product[]) => {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -14,11 +14,16 @@ const shuffle = (arr: Product[]) => {
 };
 
 const OurProducts = () => {
-  const productsFromState = [...useSelector((state: State) => state.products)];
-  shuffle(productsFromState);
+  const products = useSelector((state:State)=> state.data)
+  const productsList = [...products]
+
+
+
+  shuffle(productsList);
+
 
   // preserve the order of the products to not change with re-rendering
-  const shuffledProducts = useRef(productsFromState);
+  const shuffledProducts = useRef(productsList);
 
   const finalNormalProducts = useRef(
     shuffledProducts.current.slice(
@@ -63,9 +68,6 @@ const OurProducts = () => {
     if (viewAllBtnRef.current?.textContent == "View All Products") {
       viewAllBtnRef.current.textContent = "View Less Products";
     }
-    //  else {
-    //   viewAllBtnRef.current.textContent = "View All Products";
-    // }
 
     // change the parent element styles if the "setParentStyles" function is present
     if (parentStyles == "flex overflow-auto gap-8") {
@@ -125,7 +127,6 @@ const OurProducts = () => {
           handleViewAll={handleViewAll}
           cardWidth={true}
           scrollRef={scrollFirstProductsRef}
-          productsList={finalNormalProducts.current}
           showBtn={false}
           showDiscount={false}
           showPrevPrice={false}
@@ -137,7 +138,6 @@ const OurProducts = () => {
           handleViewAll={handleViewAll}
           cardWidth={true}
           scrollRef={scrollSecondProdcutsRef}
-          productsList={finalColoredProducts.current}
           showBtn={true}
           showBtns={true}
           showDiscount={false}
@@ -151,3 +151,5 @@ const OurProducts = () => {
 };
 
 export default OurProducts;
+
+

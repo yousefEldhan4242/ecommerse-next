@@ -1,10 +1,10 @@
 "use client";
-import { useSelector } from "react-redux";
 import SectionProducts from "./SectionProducts";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle/SectionTitle";
 import { useRef, useState } from "react";
-import { State } from "../rtk/store";
 import Product from "@/interfaces";
+import { useSelector } from "react-redux";
+import { State } from "../rtk/store";
 
 const shuffle = (arr: Product[]) => {
   const shuffledArr = [...arr];
@@ -16,10 +16,13 @@ const shuffle = (arr: Product[]) => {
 };
 
 const ThisMonth = () => {
-  const products = [...useSelector((state: State) => state.products)];
-  const shuffleProducts = useRef(shuffle(products));
 
-  const [productsList, setProductsList] = useState(
+  const products = useSelector((state:State) => state.data)
+
+  
+  const shuffleProducts = useRef(products);
+
+  const [productsList, setProductsList] = useState<Product[]>(
     shuffleProducts.current.slice(0, 4)
   );
 
@@ -43,7 +46,6 @@ const ThisMonth = () => {
           showCounter={false}
         />
         <SectionProducts
-          productsList={productsList}
           cardWidth={false}
           showBtn={false}
           showDiscount={false}
@@ -58,3 +60,5 @@ const ThisMonth = () => {
 };
 
 export default ThisMonth;
+
+

@@ -1,71 +1,67 @@
+
+
+import Product from "@/interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Product {
-  quantity: number;
-  id: number;
-}
+// Safely parse localStorage data
+const getCartFromLocalStorage = (): Product[] => {
+  try {
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart).filter((product: Product) => product.quantity !== 0) : [];
+  } catch (error) {
+    console.error("Error parsing cart from localStorage:", error);
+    return [];
+  }
+};
+
+// Safely update localStorage
+const saveCartToLocalStorage = (state: Product[]) => {
+  try {
+    localStorage.setItem("cart", JSON.stringify(state));
+  } catch (error) {
+    console.error("Error saving cart to localStorage:", error);
+  }
+};
 
 const cartSlice = createSlice({
-  initialState:
-    (JSON.parse(localStorage.getItem("cart") as string) &&
-      JSON.parse(localStorage.getItem("cart") as string).filter(
-        (product: Product) => product.quantity != 0
-      )) ||
-    [],
   name: "cartSlice",
+  initialState: getCartFromLocalStorage(),
   reducers: {
     addToCart: (state, action) => {
-      const foundProduct = state.find(
-        (product: Product) => product.id == action.payload.id
-      );
-
+      const foundProduct = state.find((product: Product) => product.asin === action.payload.asin);
       if (!foundProduct) {
         state.push({ ...action.payload, quantity: 1 });
       }
-
-      localStorage.setItem("cart", JSON.stringify(state));
+      saveCartToLocalStorage(state);
     },
     increaseQuantityBy1: (state, action) => {
-      const foundProduct = state.find(
-        (product: Product) => product.id == action.payload.id
-      );
+      const foundProduct = state.find((product: Product) => product.asin === action.payload.asin);
       if (foundProduct) {
         foundProduct.quantity++;
+        saveCartToLocalStorage(state);
       }
-      localStorage.setItem("cart", JSON.stringify(state));
     },
     increaseQuantityBySpecificQunatity: (state, action) => {
-      const foundProduct = state.find(
-        (product: Product) => product.id == action.payload.id
-      );
+      const foundProduct = state.find((product: Product) => product.asin === action.payload.asin);
       if (foundProduct) {
-        if (foundProduct.quantity == 1) {
-          // if the product added to the first time set the quantity of the product to the quantity from the reducer
+        if (foundProduct.quantity === 1) {
           foundProduct.quantity = action.payload.quantity;
         } else {
-          // if this isn't the first add for the product add the quantity of the product to the quantity of the reducer
           foundProduct.quantity += action.payload.quantity;
         }
+        saveCartToLocalStorage(state);
       }
-      localStorage.setItem("cart", JSON.stringify(state));
     },
     decreaseQuantity: (state, action) => {
-      const productCopy = state.find(
-        (product: Product) => product.id == action.payload.id
-      );
-      if (productCopy && productCopy.quantity > 0) {
-        productCopy.quantity--;
+      const foundProduct = state.find((product: Product) => product.asin === action.payload.asin);
+      if (foundProduct && foundProduct.quantity > 0) {
+        foundProduct.quantity--;
+        saveCartToLocalStorage(state);
       }
-      localStorage.setItem("cart", JSON.stringify(state));
     },
     updateCart: () => {
-      return (
-        (JSON.parse(localStorage.getItem("cart") as string) &&
-          JSON.parse(localStorage.getItem("cart") as string).filter(
-            (product: Product) => product.quantity != 0
-          )) ||
-        []
-      );
+      const updatedState = getCartFromLocalStorage();
+      return updatedState;
     },
     clearCart: () => {
       localStorage.removeItem("cart");

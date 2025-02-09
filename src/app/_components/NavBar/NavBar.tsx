@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef } from "react";
-import Navbar from "./ChildNavBar";
+import ChildNavBar from "./ChildNavBar";
 import { useSelector } from "react-redux";
-import { State } from "../rtk/store";
+import { State } from "../../rtk/store";
 
-// i have created this component to make the ChildNavBar component not a server component
+// i have created this component to make the ChildNavBar component a server component
 // by doing props drilling from this component
 
 const NavBarClientParent = () => {
@@ -15,7 +15,8 @@ const NavBarClientParent = () => {
   const searchBarRef = useRef<HTMLInputElement>(null);
   return (
     <div>
-      <Navbar
+      <ChildNavBar
+      
         searchBarRef={searchBarRef}
         isLoggedIn={isLoggedIn}
         cart={cart}

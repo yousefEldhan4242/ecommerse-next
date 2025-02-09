@@ -3,6 +3,7 @@ import React from "react";
 import { authOptions } from "../../lib/nextAuth";
 import Link from "next/link";
 import initTranslations from "@/app/i18n";
+import LanguageChanger from "@/app/_components/LanguageChanger";
 
 interface localInterface {
   params: {
@@ -25,6 +26,7 @@ const page = async ({ params: { locale } }: localInterface) => {
           <h3>{t("email", { email: session.user?.email })}</h3>
         </div>
       )}
+      <LanguageChanger/>
     </div>
   );
 };

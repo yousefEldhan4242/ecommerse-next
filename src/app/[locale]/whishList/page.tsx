@@ -1,6 +1,8 @@
-import NavBar from "../../_components/NavBar";
+"use client"
+
+import NavBar from "../../_components/NavBar/NavBar";
 import Footer from "../../_components/Footer";
-import SectionTitle from "../../_components/SectionTitle";
+import SectionTitle from "../../_components/sectionTitle/SectionTitle";
 import SectionProducts from "../../_components/SectionProducts";
 import { useSelector } from "react-redux";
 import { useRef, useState } from "react";
@@ -18,7 +20,7 @@ const shuffle = (arr: Product[]) => {
 
 const WhishLishPage = () => {
   const whishListProducts = useSelector((state: State) => state.whishList);
-  const products = [...useSelector((state: State) => state.products)];
+  const products = [...useSelector((state: State) => state.data)];
   const shuffleProducts = useRef(shuffle(products));
 
   const [productsList, setProductsList] = useState(
@@ -45,7 +47,6 @@ const WhishLishPage = () => {
           isInWhishList={true}
         />
         <SectionProducts
-          productsList={whishListProducts}
           cardWidth={true}
           parentStyles={"flex overflow-auto gap-8"}
           isInWhishList={true}
@@ -59,7 +60,6 @@ const WhishLishPage = () => {
           isInWhishList={true}
         />
         <SectionProducts
-          productsList={productsList}
           cardWidth={true}
           parentStyles={
             "grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-8"

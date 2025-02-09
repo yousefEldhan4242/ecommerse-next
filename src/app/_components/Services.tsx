@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 const Services = () => {
   return (
     <>
       <section className="container flex justify-evenly items-center text-center pb-[100px] gap-10 flex-wrap">
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-center">
-            <img src="/Services.png" alt="" />
+            <Image width={100} height={100} src="/Services.png" alt="" />
           </div>
           <div>
             <h4 className="text-[22px] font-semibold mb-2">
@@ -16,7 +18,7 @@ const Services = () => {
 
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-center">
-            <img src="/Customer-Services.png" alt="" />
+            <Image width={100} height={100} src="/Customer-Services.png" alt="" />
           </div>
           <div>
             <h4 className="text-[22px] font-semibold mb-2">
@@ -28,7 +30,7 @@ const Services = () => {
 
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-center">
-            <img src="/Gutranteed.png" alt="" />
+            <Image width={100} height={100} src="/Gutranteed.png" alt="" />
           </div>
           <div>
             <h4 className="text-[22px] font-semibold mb-2">

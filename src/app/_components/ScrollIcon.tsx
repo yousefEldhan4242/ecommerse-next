@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const ScrollIcon = () => {
@@ -32,7 +33,8 @@ const ScrollIcon = () => {
       onClick={handleScrollIcon}
       className="w-11 h-11 fixed bottom-[10px] right-[-50px] cursor-pointer duration-300 scroll-icon text-[30px] text-[#2196f3] z-[1000]"
     >
-      <img className="w-full h-full" src="/Fill with Up Arrow.png" alt="" />
+      <Image className="w-full h-full" src="/Fill with Up Arrow.png" alt="" width={100}
+       height={100}/>
     </div>
   );
 };

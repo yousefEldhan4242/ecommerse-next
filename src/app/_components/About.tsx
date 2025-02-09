@@ -1,6 +1,7 @@
 import Link from "next/link";
 // import categories from "./categoriesList";
 import AboutPageCard from "./AboutPageCard";
+import Image from "next/image";
 // import Services from "./Services";
 // import ShowCategories from "./ShowCategories";
 
@@ -34,7 +35,7 @@ const About = () => {
             ranging from consumer.
           </p>
         </div>
-        <img
+        <Image width={100} height={100}
           className="absolute h-[34vw] max-h-[600px] right-0 hidden lg:block"
           src="/pexels-mart-production-8801197.jpg"
           alt=""
@@ -57,11 +58,11 @@ const About = () => {
           <AboutPageCard
             job="Product Designer"
             name="Will Smith"
-            image="./imgs/TomCruise.png"
+            image="/TomCruise.png"
           />
         </section>
         <div className="m-auto mt-2">
-          <img src="/Frame 883.png" alt="" />
+          <Image width={100} height={100} src="/Frame 883.png" alt="" />
         </div>
         <section className="mt-[150px]">{/* <Services /> */}</section>
       </section>

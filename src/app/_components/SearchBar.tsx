@@ -7,10 +7,11 @@ interface Props {
   searchBarRef: React.RefObject<HTMLDivElement>;
 }
 const SearchBar = ({ isInSignUpOrLogIn, searchBarRef }: Props) => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
+    handleResize()
 
     window.addEventListener("resize", handleResize);
 

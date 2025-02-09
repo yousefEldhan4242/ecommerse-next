@@ -1,4 +1,4 @@
-import Product from "@/interfaces";
+import { CategoryInterface } from "@/interfaces";
 import PropTypes from "prop-types";
 
 interface CategoryCard {
@@ -47,7 +47,7 @@ CategoryCard.propTypes = {
 
 interface ShowCategoriesInterface {
   currentIndex: number;
-  categories: Product[];
+  categories: CategoryInterface[];
 }
 
 const ShowCategories = ({

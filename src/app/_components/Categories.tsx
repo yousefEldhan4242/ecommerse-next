@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle/SectionTitle";
 import ShowCategories from "./ShowCategories";
 import categories from "./categoriesList";
 

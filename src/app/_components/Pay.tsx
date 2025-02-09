@@ -7,7 +7,7 @@ export const Total = () => {
   const cartState = useSelector((state: State) => state.cart);
 
   let total = cartState.reduce((acc, product) => {
-    acc += +product.currentPrice * product.quantity;
+    acc += +product.price.value * product.quantity;
     return acc;
   }, 0);
   total = +total.toFixed(2);

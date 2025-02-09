@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import NavBarLink from "./NavBarLink";
+import NavBarLink from "./NavBar/NavBarLink";
 
 const BurgerIcon = () => {
   const burgerIconRef = useRef<HTMLDivElement>(null);

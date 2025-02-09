@@ -1,13 +1,14 @@
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import Image from "next/image";
 import PropTypes from "prop-types";
 
 const Navigator = () => {
   return (
     <section
-      className={`container flex gap-12 text-nowrap md:flex-nowrap flex-wrap`}
+      className={`container flex gap-10 text-nowrap md:flex-nowrap flex-wrap  pt-10`}
     >
       <div
-        className={`navigator pt-10 md:border-r-[1px] md:border-border-color flex grow gap-3 md:justify-between w-[22%]`}
+        className={`navigator flex w-[22%]`}
       >
         <ul className="flex flex-col justify-between">
           <li className="hover:text-navigator-hover-color duration-300">
@@ -38,7 +39,7 @@ const Navigator = () => {
             <span className="cursor-pointer">Health & Beauty</span>
           </li>
         </ul>
-        <ul className="arrows mr-5">
+        <ul className="arrows pr-4 md:border-r-[1px] md:border-border-color">
           <li>
             <KeyboardArrowRightOutlinedIcon className="cursor-pointer" />
           </li>
@@ -47,8 +48,8 @@ const Navigator = () => {
           </li>
         </ul>
       </div>
-      <div className="image pt-10 flex items-center w-full md:w-fit">
-        <img className="w-full" src="/homepng.png" alt="" />
+      <div className="image flex items-center w-full grow">
+        <Image width={100} height={100} className="w-full" src="/homepng.png" alt="" />
       </div>
     </section>
   );

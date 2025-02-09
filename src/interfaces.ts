@@ -1,7 +1,6 @@
 export default interface Product {
   id: number;
   name: string;
-  main_image: string;
   currentPrice: number;
   quantity: number;
   title: string;
@@ -11,17 +10,48 @@ export default interface Product {
   previousPrice: string;
   color: string;
   description: string;
-  image_1: string;
-  image_2: string;
-  image_3: string;
-  image_4: string;
+  price:{
+    value:string
+  }
+  image:string;
+  asin:string;
+  main_image:{
+    link:string
+  };
+  images:ProductImage[]
+}
+// export interface ProductByAsin{
+
+// }
+
+interface ProductImage {
+    link:string
+  
 }
 
 export interface ProductCardInterface {
-  product?: Product;
+  product: Product;
   cardWidth: boolean;
   showOnlyProductsWithSale?: boolean;
   newBtn?: boolean;
   showBtns?: boolean;
   isInWhishList?: boolean;
+  isInProductsPage?: boolean;
+  showDiscount?: boolean;
+  showPrevPrice?: boolean;
+}
+
+export interface CategoryInterface {
+  title: string;
+  name: string;
+  icon?: React.ReactElement;
+}
+
+
+export interface ChildNavBarProps {
+  isInSignUpOrLogIn?: boolean;
+  whishList: object[];
+  cart: object[];
+  isLoggedIn: boolean;
+  searchBarRef: React.RefObject<HTMLInputElement>;
 }

@@ -1,6 +1,6 @@
-import Navbar from "../../_components/NavBar";
+import Navbar from "../../_components/NavBar/NavBar";
 import Footer from "../../_components/Footer";
-import Form from "../../_components/CheckOut";
+import Form from "../../_components/checkout/CheckoutPage";
 
 const CheckOutPage = () => {
   return (

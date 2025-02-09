@@ -2,7 +2,7 @@ import initTranslations from "../i18n";
 import TranslationProvider from "../_components/TranslationProvider";
 import Sections from "../_components/Navigator";
 import FlashSales from "../_components/FlashSales";
-import Navbar from "../_components/NavBar";
+import Navbar from "../_components/NavBar/NavBar";
 import ThisMonth from "../_components/ThisMonth";
 import Categories from "../_components/Categories";
 import OurProducts from "../_components/OurProducts";
@@ -11,6 +11,7 @@ import MyImage from "../_components/MyImage";
 import Services from "../_components/Services";
 import Footer from "../_components/Footer";
 import ScrollIcon from "../_components/ScrollIcon";
+
 
 interface localInterface {
   params: {

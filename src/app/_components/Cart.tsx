@@ -29,7 +29,7 @@ const Cart = () => {
               <div className="text-right px-10 py-5">Subtotal</div>
             </div>
             {products.map((item) => {
-              return <CartProduct item={item} key={item.id} />;
+              return <CartProduct item={item} key={item.asin} />;
             })}
 
             <div></div>

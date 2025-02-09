@@ -1,5 +1,5 @@
 import Images from "./Images";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle/SectionTitle";
 
 const Featured = () => {
   return (

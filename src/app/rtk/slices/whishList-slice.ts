@@ -1,21 +1,32 @@
+
+
+import Product from "@/interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Product {
-  id: number;
-}
+
+// Safe initialization of initial state
+const initialState: Product[] = (() => {
+  try {
+    const storedWhishList = localStorage.getItem("whishList");
+    return storedWhishList ? JSON.parse(storedWhishList) : [];
+  } catch (error) {
+    console.error("Error parsing localStorage whishList:", error);
+    return [];
+  }
+})();
 
 const whishLishSlice = createSlice({
-  initialState: JSON.parse(localStorage.getItem("whishList") as string) || [],
   name: "whishLishSlice",
+  initialState,
   reducers: {
     addToWhishList: (state, action) => {
       const productCopy = state.find(
-        (product: Product) => product.id == action.payload.id
+        (product: Product) => product.asin === action.payload.asin
       );
       if (!productCopy) {
         state.push(action.payload);
+        localStorage.setItem("whishList", JSON.stringify(state));
       }
-      localStorage.setItem("whishList", JSON.stringify(state));
     },
     clearWhishList: () => {
       localStorage.removeItem("whishList");

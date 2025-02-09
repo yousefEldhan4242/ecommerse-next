@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PropTypes from "prop-types";
 
 const Footer = () => {
@@ -19,7 +20,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 type="text"
               />
-              <img
+              <Image width={50} height={50}
                 className="absolute right-[1px] top-[calc(25%_-_3px)] bg-black pr-[10px] pl-5"
                 src={"/icon-send.png"}
                 alt=""
@@ -81,36 +82,36 @@ const Footer = () => {
           <h6 className="text-[20px] font-semibold mb-5">Download App</h6>
           <div className="text-[#afafaf]">Save $3 with App New User Only</div>
           <div className="flex gap-1 mb-4 mt-2">
-            <img src={"/Qr Code.png"} alt="" />
+            <Image width={100} height={100} src={"/Qr Code.png"} alt="" />
             <div className="flex flex-col gap-1">
-              <img src={"/GooglePlay.png"} alt="" />
-              <img src={"/AppStore.png"} alt="" />
+              <Image width={100} height={100} src={"/GooglePlay.png"} alt="" />
+              <Image width={100} height={100}src={"/AppStore.png"} alt="" />
             </div>
           </div>
           <div className="flex gap-[13px]">
-            <img
+            <Image width={38} height={25}
               className="hover:bg-[#1877f2] duration-300 rounded p-1"
               src={"/Icon-Facebook.png"}
               alt=""
             />
-            <img
+            <Image width={38} height={25}
               className="rounded hover:bg-[#1DA1F2] duration-300 p-1"
               src={"/Icon-Twitter.png"}
               alt=""
             />
             <div className="z-10 group relative p-1">
               <div className="overlay rounded z-20 absolute w-full h-full top-0 left-0 opacity-0 bg-instagram-gradient duration-300 group-hover:opacity-100"></div>
-              <img
+              <Image width={38} height={25}
                 className="z-30 relative"
                 src={"/icon-instagram.png"}
                 alt=""
               />
             </div>
-            <img
+            <Image width={38} height={25}
               className="rounded hover:bg-[#0077B5] duration-300 p-1"
               src={"/Icon-Linkedin.png"}
               alt=""
-            />
+            /> 
           </div>
         </div>
       </div>
